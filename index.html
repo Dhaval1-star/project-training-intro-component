@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Project tracking intro component</title>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&display=swap');
+    *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    .container{
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+    .container::before{
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      top: 0px;
+      right: 0px;
+      border-bottom-left-radius: 50px;
+      background-color: hsl(207, 33%, 95%);
+      z-index: -1;
+    }
+    .container nav{
+      width: 80%;
+      height: 15vh;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .container nav .links{
+      width: 40%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .icon{
+      display: none;
+    }
+    a{
+      width: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      /* font-family: 'Barlow', sans-serif; */
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.9px;
+      color: hsl(230, 29%, 20%);
+      text-transform: uppercase;
+    }
+    a p{
+      width: 6px;
+      height: 6px;
+      background-color: hsl(231, 7%, 65%);
+      border-radius: 50%;
+      display: none;
+    }
+    a:hover{
+      color: hsl(231, 7%, 65%);
+    }
+    a:hover p{
+      display: block;
+    }
+
+    .container .main-content{
+      width: 100%;
+      height: 85vh;
+      display: flex;
+      flex-wrap: wrap-reverse;
+    }
+    .main-content .content, .image{
+      width: 50%;
+    }
+    .image{
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+    .main-content .content{
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      text-align: left;
+      flex-direction: column;
+    }
+    .content .text{
+      width: 81%;
+    }
+    .text p{
+      font-family: 'Barlow Condensed', sans-serif;
+      /* font-family: 'Barlow', sans-serif; */
+      letter-spacing: 5px;
+      font-size: 18px;
+      color: hsl(231, 7%, 65%);
+      margin-bottom: 15px;
+    }
+    .text p span{
+      letter-spacing: 0px;
+      background-color: hsl(230, 29%, 20%);
+      padding: 3px 10px;
+      border-radius: 50px;
+      color: white;
+    }
+    .text h1{
+      width: 80%;
+      font-size: 60px;
+      line-height: 1;
+      text-transform: capitalize;
+      /* font-family: 'Barlow Condensed', sans-serif; */
+      font-family: 'Barlow', sans-serif;
+      font-weight: 900;
+      margin-bottom: 30px;
+    }
+    .text .para{
+      width: 50%;
+      font-size: 17px;
+      font-weight: 500;
+      font-family: 'Barlow', sans-serif;
+      letter-spacing: 1px;
+      color: hsl(231, 7%, 65%);
+      margin-bottom: 60px;
+    }
+    .text .button {
+      font-size: 18px;
+      color: hsl(231, 7%, 65%);
+      letter-spacing: 2px;
+      text-transform: capitalize;
+      word-spacing: 3px;
+      font-family: 'Barlow', sans-serif;
+    }
+    .text .button span{
+      font-family: 'Barlow Condensed', sans-serif;
+      background-color: hsl(0, 100%, 68%);
+      padding: 10px 20px;
+      color: white;
+      letter-spacing: 1px;
+      border-radius: 5px;
+    }
+
+    @media screen and (max-width: 450px){
+      .icon{
+        display: block;
+      }
+      .container{
+        height: auto;
+      }
+      .container::before{
+        height: 55%;
+      }
+      .container nav{
+        position: relative;
+        height: 10vh;
+      }
+      .container nav .links{
+        position: absolute;
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        top: 70px;
+        background: white;
+        z-index: 1;
+      }
+      .links a{
+        width: 100%;
+        line-height: 1.6;
+        margin: 8px 0px;
+        flex-direction: column;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .links a p{
+        height: 1px;
+        width: 80%;
+        margin-bottom: 5px;
+      }
+      .main-content{
+        height: auto;
+      }
+      .main-content .content, .image{
+        width: 100%;
+      }
+      .image{
+        height: 50vh;
+        padding: 50px 0px;
+      }
+      .image img{
+        width: auto;
+        height: 40vh;
+      }
+      .container .main-content{
+        height: auto;
+      }
+      .main-content .content{
+        width: 100%;
+        padding: 20px ;
+      }
+      .content .text{
+        width: 100%;
+      }
+      .text p{
+        font-size: 16px;
+      }
+      .text h1{
+        width: 100%;
+        font-size: 40px;
+      }
+      .text .para{
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .text .button{
+        line-height: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <img src="images/logo.svg" alt="logo svg">
+      </div>
+      <div class="links">
+        <a href="#">
+          <p></p>
+          Product
+        </a>
+        <a href="#">
+          <p></p>
+          Features
+        </a>
+        <a href="#">
+          <p></p>
+          Pricing
+        </a>
+          <a href="#">
+          <p></p>
+          Login
+        </a>
+      </div>
+      <div class="icon"><img src="images/icon-hamburger.svg" alt="icon-hamburger" id="image"></div>
+    </nav>
+    
+    <div class="main-content">
+      <div class="content">
+        <div class="text">
+          <p><span>New</span> Monograph Dashboard</p>
+          <h1>Powerful insights into your team</h1>
+          <div class="para">Project planning and time tracking for agile teams</div>
+          <div class="button">
+            <span>Schedule a demo</span> to see a live preview
+          </div>
+        </div>
+      </div>
+      <div class="image">
+        <img src="images/illustration-devices.svg" alt="illustrate devices ">
+      </div>
+    </div>
+  </div>
+  <script>
+    let image = document.querySelector("#image");
+    let link = document.querySelector(".links");
+    console.log(image.src);
+    let num = 1;
+    image.onclick = () => {
+      if (num%2==0) {
+        image.src = "images/icon-hamburger.svg";
+        link.style.display = "none";
+        num++;
+      }else{
+        image.src = "images/icon-close.svg";
+        link.style.display = "block";
+        num++;
+      }
+    }
+
+  </script>
+
+</body>
+</html>
